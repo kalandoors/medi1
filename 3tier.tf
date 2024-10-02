@@ -127,7 +127,6 @@ resource "aws_instance" "web_instance" {
   instance_type               = "t2.micro"
   subnet_id                   = aws_subnet.public_subnet.id
   security_groups             = [aws_security_group.web_sg.name]
-  associate_public_ip_address = true
 }
 
 # Application Server EC2 Instance
