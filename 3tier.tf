@@ -128,6 +128,7 @@ resource "aws_instance" "web_instance" {
   subnet_id                   = aws_subnet.public_subnet.id
   security_groups             = [aws_security_group.web_sg.name]
   associate_public_ip_address = true
+  monitoring = true
 }
 
 # Application Server EC2 Instance
@@ -136,6 +137,7 @@ resource "aws_instance" "app_instance" {
   instance_type               = "t2.micro"
   subnet_id                   = aws_subnet.app_subnet.id
   security_groups             = [aws_security_group.app_sg.name]
+  monitoring = true
 }
 
 # Database Server EC2 Instance
@@ -144,4 +146,5 @@ resource "aws_instance" "db_instance" {
   instance_type               = "t2.micro"
   subnet_id                   = aws_subnet.db_subnet.id
   security_groups             = [aws_security_group.db_sg.name]
+  monitoring = true
 }
