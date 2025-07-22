@@ -1,0 +1,21 @@
+# Use an outdated base image with known CVEs
+FROM python:3.6-slim
+
+# Install outdated packages with known vulnerabilities
+RUN apt-get update && \
+    apt-get install -y \
+    openssl=1.1.0f-3+deb9u2 \
+    curl=7.52.1-5+deb9u10 \
+    wget=1.18-5+deb9u3 && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install a vulnerable version of Flask
+RUN pip install Flask==0.12.2
+
+# Expose HTTP port
+EXPOSE 5000
+
+# Add vulnerable app
+COPY app.py /app.py
+
+CMD ["python", "/app.py"]
