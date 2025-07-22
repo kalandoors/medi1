@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: my-nginx
+    ports:
+      - "80:80"   # Expose Nginx on host's port 80
+    volumes:
+      - ./html:/usr/share/nginx/html:ro  # Serve custom HTML files (optional)
