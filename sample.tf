@@ -93,4 +93,5 @@ resource "aws_instance" "web_instance" {
   tags = {
     Name = "Web-Server"
   }
+  monitoring = true
 }
